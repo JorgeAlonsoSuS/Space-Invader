@@ -80,10 +80,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ReduceBulletSpeed(float speed)
-    {      
-            bulletSpeed += speed;
-    }
+    //public void ReduceBulletSpeed(float speed)
+    //{      
+    //        bulletSpeed += speed;
+    //}
 
     public void SetBulletSpeed(float speed)
     {

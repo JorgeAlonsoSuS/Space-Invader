@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     private int hp = 6;
     private Disparos balasero;
     private bool canTrigger = true;
+    private float bulletSpeed = 0;
     public ObjectPool<Disparos> pool;
 
     public int BulletNum { get => bulletNum; set => bulletNum = value; }
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour
             {
                 Disparos disparoCopia =  pool.Get();
                 disparoCopia.gameObject.SetActive(true);
+                disparoCopia.velocidad += bulletSpeed;
                 disparoCopia.transform.position = spawnpoints[i].transform.position;
                 if(bulletNum > 2)
                 {
@@ -163,7 +165,7 @@ public class Player : MonoBehaviour
 
     public void AddBulletSpeed(float speed)
     {
-        balasero.velocidad += speed;
+        bulletSpeed += speed;
     }
 
     public void SetBulletSpeed(float speed)

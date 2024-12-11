@@ -110,7 +110,6 @@ public class Dice : MonoBehaviour {
         // for player movement for example
         finalSide = randomDiceSide + 1;
 
-
         spawner.SetResult(finalSide);
 
         // Show final dice value in Console
