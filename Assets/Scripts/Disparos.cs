@@ -37,7 +37,11 @@ public class Disparos : MonoBehaviour
         if(timer >= 4)
         {
             timer = 0;
-            myPool.Release(this);
+            if(this.gameObject.tag != "BBullet")
+            {
+                myPool.Release(this);
+            }
+            
         }
     }
 

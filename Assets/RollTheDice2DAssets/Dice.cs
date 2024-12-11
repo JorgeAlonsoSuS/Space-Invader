@@ -109,7 +109,6 @@ public class Dice : MonoBehaviour {
         // Assigning final side so you can use this value later in your game
         // for player movement for example
         finalSide = randomDiceSide + 1;
-
         spawner.SetResult(finalSide);
 
         // Show final dice value in Console

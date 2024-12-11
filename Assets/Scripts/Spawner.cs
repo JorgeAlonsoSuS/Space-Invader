@@ -143,11 +143,16 @@ public class Spawner : MonoBehaviour
 
             case 3:
                 Debug.Log("Triple disparo!");
-                if (playerScript.BulletNum < 3) { texto.SetText("Triple Shot???"); }
-                else if (playerScript.BulletNum == 3) { texto.SetText("Quintuple Shot???"); }
-
-                if (playerScript.BulletNum < 3) { playerScript.BulletNum = 3; }
-                else if(playerScript.BulletNum == 3) { playerScript.BulletNum = 5; }
+                if (playerScript.BulletNum < 3) 
+                { 
+                    playerScript.BulletNum = 3;
+                    texto.SetText("Triple Shot???");
+                }
+                else if(playerScript.BulletNum == 3) 
+                { 
+                    playerScript.BulletNum = 5;
+                    texto.SetText("Quintuple Shot???");
+                }
                 audioPlayer.PlayOneShot(upgrade);
                 break;
 
@@ -165,7 +170,7 @@ public class Spawner : MonoBehaviour
                 playerScript.pool.Clear();
                 playerScript.AddBulletSpeed(5f);
                 playerScript.AddPlayerSpeed(5f);
-                playerScript.BulletNum += 1;
+
                 if (playerScript.BulletNum < 3) { playerScript.BulletNum = 3; }
                 else if (playerScript.BulletNum == 3) { playerScript.BulletNum = 5; }
                 //enemyScript.ReduceBulletSpeed(1.5f);
