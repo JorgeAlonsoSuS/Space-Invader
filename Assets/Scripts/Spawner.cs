@@ -11,7 +11,6 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject boss;
     private Player playerScript;
-    private Enemy enemyScript;
     [SerializeField] private TMP_Text texto;
     private bool finishedGambling = false;
     private int diceResult;
@@ -30,7 +29,6 @@ public class Spawner : MonoBehaviour
     private float enemyBulletSpeed = 0f;
     private float enemySpeed = 0f;
     private int enemyHP = 0;
-    private float playerBulletSpeed;
     private int bossHP = 0;
 
     private int enemigosPWave = 10;
@@ -43,7 +41,6 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         playerScript = player.GetComponent<Player>();
-        enemyScript = enemy.GetComponent<Enemy>();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -81,7 +78,6 @@ public class Spawner : MonoBehaviour
         texto.SetText("Uh Oh... Here comes a bossfight");
         yield return new WaitForSeconds(2f);
         texto.SetText("");
-        //boss.GetComponent<Boss>().AddHP(shipsCrashed*bossMultiplyer);
         bossHP += shipsCrashed * bossMultiplyer;
         GameObject bossInstance = Instantiate(boss, transform.position, Quaternion.identity);
         Boss bossStats = bossInstance.GetComponent<Boss>();
@@ -170,10 +166,8 @@ public class Spawner : MonoBehaviour
                 playerScript.pool.Clear();
                 playerScript.AddBulletSpeed(5f);
                 playerScript.AddPlayerSpeed(5f);
-
                 if (playerScript.BulletNum < 3) { playerScript.BulletNum = 3; }
                 else if (playerScript.BulletNum == 3) { playerScript.BulletNum = 5; }
-                //enemyScript.ReduceBulletSpeed(1.5f);
                 enemyBulletSpeed -= 1.5f;
                 audioPlayer.PlayOneShot(upgrade);
 
@@ -183,25 +177,13 @@ public class Spawner : MonoBehaviour
                 Debug.Log("oh oh... el juego es mas difícil");
                 texto.SetText("Uh oh... The game just got harder...");
                 enemigosPWave += 7;
-                //enemyScript.AddBulletSpeed(1f);
                 enemyBulletSpeed += 1f;
-                //enemyScript.AddSpeed(2.5f);
                 enemySpeed += 2.5f;
                 enemyHP += 1;
-                //enemyScript.AddHP(1);
                 audioPlayer.PlayOneShot(notUpgrade);
                 break;
 
         }
     }
 
-    private void OnDestroy()
-    {   
-        //Antes de buildear quitar
-        //enemyScript.SetBulletSpeed(4f);
-        //enemyScript.SetSpeed(3f);
-        //enemyScript.SetHP(2);
-        //playerScript.SetBulletSpeed(8f);
-        //boss.GetComponent<Boss>().SetHp(20);
-    }
 }

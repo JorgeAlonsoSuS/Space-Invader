@@ -89,9 +89,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && temporizador > ratioDisparo) 
         {   
-            //Instantiate(bullet, spawnpoints[0].transform.position, Quaternion.identity);
-            //Instantiate(bullet, spawnpoints[1].transform.position, Quaternion.identity);
-            //if (triple) { Instantiate(bullet, spawnpoints[2].transform.position, Quaternion.identity); }
             temporizador = 0;
             audioPlayer.PlayOneShot(shoot);
 
